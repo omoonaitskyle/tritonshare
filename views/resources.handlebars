@@ -1,27 +1,24 @@
 <!doctype html>
 
-<!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <title>TritonShare</title>
- <!-- Dont edit this shit -->
+    <title>Resources</title>    
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/styles.css" rel="stylesheet">  <!--this needs to change-->
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
- <!-- Dont edit above this shit -->
+    <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css"> 
+    <!-- this is a comment in HTML -->
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->        
 </head>
 
-    <body>
-    	<!--
-        <div class="container">
-        <h3>Friend Added.</h3>
-        <a href="/">Back</a>
-   
-        </div>
-    -->
-
-<!-- Navigation bar -->
+<body>
+    <!-- Navigation bar -->
     <div class = "navbar navbar-default navbar-static-top">
         <div class = "container">
             <a href = "/" class = "navbar-brand">Home</a>
@@ -29,65 +26,52 @@
         </div>
     </div>
 <!-- Navigation bar ends-->
-	
+    <div class="container">
+        <!-- h1 through h6 are headers. The higher the number, the smaller the header -->
+        <!-- p means paragraph -->
 
 
-    <header id="top" class="header">
-        <div class="text-vertical-center">
-            <h2>Resources</h2>
-        </div>
-    </header>
- 
-
-
-
-
- <form id="addFriendForm" role="form" method="get" action="/share">
-        <div class="form-group">
-	<div class="dropdown">
-{{#each friends}}
-            <div class="row">
-                <div class="col-sm-6 col-md-4">
-                    <div class="thumbnail"> 
-                        
-                        <div class="caption">
-                            <a href="preview" class="name">{{name}}</a>
-                            <p>{{description}}</p>
-                        </div>
-                    </div>
-                </div>
+        <h4>Resources</h4>
+        <!-- divs are invisible structuring elements that stack vertically by default. Use them to organize your code -->
+        <!-- img tags are images. Lorem Pixel will deliver random images; handy! -->
+        <!-- a are anchors, also known as hyperlinks. Use the href attribute to tell the browser where to go when the user clicks -->
+        {{#each projects}}
+        <div class="project" id="project{{id}}">
+            <div class="thumbnail">
+                <a href="#">Expand
+                    <p>{{title}}</p>
+                </a>
+                <div class="details"></div>
             </div>
-{{/each}}
-<!--
-		<a class="btn btn-default" href="/example" role="button">Week 1 Notes - uploaded by student1 (2-03-15)</a><br>
-		<a class="btn btn-default" href="/example" role="button">Week 2 Notes - uploaded by student2 (2-03-15)</a><br>
-		<a class="btn btn-default" href="/example" role="button">Week 3 Notes - uploaded by student3 (2-03-15)</a><br>
-        <a class="btn btn-default" href="/example" role="button">Week 4 Notes - uploaded by student4 (2-03-15)</a><br>
-		<br>
-        -->
-	</div>
-	</div>
-    <br/>      
-    <center> <input type="submit" id="submitBtn" class="btn btn-default" value="Add a Resource"></input></center>
+        </div>
+        {{/each}}
+
+    <hr />
+
+    <form id="new-project-form" role="form">
+    <div class="form-group">
+      <label for="title">Title</label>
+      <input type="text" class="form-control" id="title" placeholder="Title">
+    </div>
+    <div class="form-group">
+      <label for="image_url">URL</label>
+      <input type="text" class="form-control" id="image_url" placeholder="http://google.com">
+    </div>
+    <div class="form-group">
+      <label for="summary">Description</label>
+      <textarea type="text" class="form-control" id="summary" rows="3" placeholder="Add a description."></textarea>
+    </div>
+    <div class = "container" id = "outer">
+    <input id="input-1a" type="file" class="file" data-show-preview="false">
+    <div id="inner">
+    <button id="newProjectSubmitButton" type="button" class="btn btn-default">Submit</button>
+    </form>
+    <form action="/preview">
+    <input type="submit" value="Preview" type="button" class="btn btn-default">
     </form>
 
-
-
-
-
-
-
-
-    <!--test shit begins here-->
-
-
-
-
-
-    <!--test shit ends here-->
-
-	<script src="js/jquery-1.11.0.js"></script>
-	<script src="js/bootstrap.js"></script>
-	<script src="js/hci-friends.js"></script>
-    </body>
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/introHCI.js"></script>
+</body>
 </html>

@@ -28,19 +28,12 @@
 			<br>
         </div>
     </header>
+
 	
 	<div class = "container" id = "outer">
 	<input id="input-1a" type="file" class="file" data-show-preview="false">
-	<div id="inner">
-		<center><h2>- OR -</h2></center>
-		<div class="form-group">
-	    	<input type="text" class="form-control" id="exampleURL" placeholder="URL">
-	    	<br>
-	    	<br>
-
-	   		(i.e. date, year, professor)
-	  	</div>
-
+  <div id="inner">
+		<center><h3>- OR -</h3></center>
 	  	
 	</div>
 
@@ -50,21 +43,27 @@
 
 
      <form id="addFriendForm" role="form" method="get" action="/add">
+     	<div class="form-group">
+          <label for="link">Submit URL:</label>
+          <input type="text" class="form-control" id="link" placeholder="Link" name="link">
+        </div>
+        <br><br>
         <div class="form-group">
           <label for="name">Title:</label>
           <input type="text" class="form-control" id="name" placeholder="Name" name="name">
         </div>
         <div class="form-group">
           <label for="description">Description:</label>
-          <input type="text" class="form-control" id="description" placeholder="Description" name="description">
+          <input type="text" class="form-control" id="description" placeholder="Description" name="description">(i.e. date, year, professor)
         </div>
-        	<form id="addFriendForm" role="form" method="get" action="/preview">
+
 	    <div class="form-group">
 
  	
 	<br/>	   
-	<center>
+
 	</form>
+		<center>
         <input type="submit" id="submitBtn" class="btn btn-default" value="Submit"></input>
     </center>
     </form>

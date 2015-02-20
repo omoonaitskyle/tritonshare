@@ -17,8 +17,14 @@ var submitted = require('./routes/submitted');
 var example = require('./routes/example');
 var add = require('./routes/add');
 
+var mongoose = require('mongoose');
+var project = require('./routes/project');
 // Example route
 // var user = require('./routes/user');
+var local_database_name = 'lab7';
+var local_database_uri  = 'mongodb://localhost/' + local_database_name
+var database_uri = process.env.MONGOLAB_URI || local_database_uri
+mongoose.connect(database_uri);
 
 var app = express();
 
@@ -43,7 +49,7 @@ if ('development' == app.get('env')) {
 }
 
 // Add routes here
-app.get('/', index.addFriend);
+app.get('/', index.view);
 app.get('/resources', resources.view);
 app.get('/share', share.view);
 app.get('/preview', preview.view);
@@ -51,6 +57,10 @@ app.get('/about', about.view);
 app.get('/submitted', submitted.view);
 app.get('/example', example.view);
 app.get('/add', add.addFriend);
+
+app.get('/project/:id', project.projectInfo);
+app.post('/project/new', project.addProject);
+app.post('/project/:id/delete', project.deleteProject);
 // Example route
 // app.get('/users', user.list);
 
