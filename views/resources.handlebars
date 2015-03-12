@@ -57,7 +57,8 @@
         {{#each projects}}
         <div class="project" id="project{{id}}">
             <div class="thumbnail">
-                <a href="#">+ {{summary}}</a>
+                <!-- <a href="#">+ {{title}}</a> -->
+                <a href="#">+ {{title}}</a>
                 <div class="details"></div>
             </div>
         </div>
@@ -66,7 +67,10 @@
     <hr />
 <input type="submit"  id="submitBtn" class="btn btn-default" value="Share a URL"></input></center> 
 
-<input type="submit"  id="submitBtn" class="btn btn-default" value="Upload a File" ></input></center> 
+<button type="button" class="btn btn-default" onclick="location.href = '/upload'">Upload a File</button>
+
+<!--
+<input type="submit"  id="submitBtn" class="btn btn-default" value="Upload a File" ></input></center> --> 
   </form>
   <!--
 <form action="#">

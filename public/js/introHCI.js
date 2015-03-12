@@ -53,10 +53,21 @@ function initializePage() {
 
 			var new_html =
 				'<div class="project-summary">'+
-				//project_json['summary']+
+				'<b>URL: </b>' + 
+				'<a href="http://' + 
+				project_json['image'] +
+				'">' + 
+				project_json['image'] + 
+				'</a>' +  
+				'<br>' +
+				'<b>Description: </b>' + 
+				project_json['summary'] + 
+				'<br>' +
+				'<button class="project-delete btn btn-default" '+
+					'type="button">remove</button>';
 				'</div>'+
-				'<div class="project-summary">'+
-				'</div>'+
+				//'<div class="project-summary">'+
+				//'</div>'+
 				'<button class="project-delete btn btn-default" '+
 					'type="button">remove</button>';
 
@@ -84,6 +95,7 @@ function initializePage() {
 		var date = $('#new-project-form #date').val();
 		var summary = $('#new-project-form #summary').val();
 		var summary2 = $('#new-project-form #summary').val();
+		/*
 		var json = {
 			'project_title': title,
 			'image_url': image_url,
@@ -91,7 +103,15 @@ function initializePage() {
 			'summary': summary,
 			'summary2': summary2
 		};
-		
+		*/
+
+		var json = {
+			'title': title,
+			'date': date,
+			'summary': summary,
+			'image': image_url 
+		};
+
 		$.post('/project/new', json, function() {
 			window.location.href = '/resources'; // reload the page
 		});
