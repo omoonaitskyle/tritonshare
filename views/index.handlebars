@@ -9,18 +9,19 @@
     <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
  <!-- Dont edit above this shit -->
 
-	 <!-- Start of Woopra Code -->
-	<script>
-	(function(){
-	        var t,i,e,n=window,o=document,a=arguments,s="script",r=["config","track","identify","visit","push","call","trackForm","trackClick"],c=function(){var t,i=this;for(i._e=[],t=0;r.length>t;t++)(function(t){i[t]=function(){return i._e.push([t].concat(Array.prototype.slice.call(arguments,0))),i}})(r[t])};for(n._w=n._w||{},t=0;a.length>t;t++)n._w[a[t]]=n[a[t]]=n[a[t]]||new c;i=o.createElement(s),i.async=1,i.src="//static.woopra.com/js/w.js",e=o.getElementsByTagName(s)[0],e.parentNode.insertBefore(i,e)
-	})("woopra");
+<!-- Start of Woopra Code -->
+<script>
+(function(){
+        var t,i,e,n=window,o=document,a=arguments,s="script",r=["config","track","identify","visit","push","call","trackForm","trackClick"],c=function(){var t,i=this;for(i._e=[],t=0;r.length>t;t++)(function(t){i[t]=function(){return i._e.push([t].concat(Array.prototype.slice.call(arguments,0))),i}})(r[t])};for(n._w=n._w||{},t=0;a.length>t;t++)n._w[a[t]]=n[a[t]]=n[a[t]]||new c;i=o.createElement(s),i.async=1,i.src="//static.woopra.com/js/w.js",e=o.getElementsByTagName(s)[0],e.parentNode.insertBefore(i,e)
+})("woopra");
 
-	woopra.config({
-	    domain: 'tritonshare.herokuapp.com'
-	});
-	woopra.track();
-	</script>
-	<!-- End of Woopra Code -->
+woopra.config({
+    domain: 'tritonsharenew.herokuapp.com'
+});
+woopra.track();
+</script>
+<!-- End of Woopra Code -->
+
 </head>
 <body>
 
@@ -36,41 +37,13 @@
 	
     <header id="top" class="header">
         <div class="text-vertical-center">
-            <h2>Welcome to</h2>
-            <h1>TritonShare</h1>
+          <!--  <h2>Welcome to</h2>-->
+             <img src="../images/logo.png" alt="Mountain View" style="width:350px;height:250px">
 			<br>
         </div>
     </header>
 
-<!--
-            {{#each friends}}
-            <div class="row">
-                <div class="col-sm-6 col-md-4">
-                    <div class="thumbnail"> 
-                        <img src="{{imageURL}}" alt="friend" class="img-rounded">
-                        <div class="caption">
-                            <h3><a href="#" class="name">{{name}}</a></h3>
-                            <p>{{description}}</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            {{/each}}
-
-
-	<div class="dropdown">
-		<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
-		Select Department  <b class = "caret"></b>
-		</button>
-		<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-			<li role="presentation"><a role="menuitem" tabindex="-1" href="#">COGS - Cognitive Science</a></li>
-			<li role="presentation"><a role="menuitem" tabindex="-1" href="#">CSE - Computer Science & Engineering</a></li>
-			<li role="presentation"><a role="menuitem" tabindex="-1" href="#">ECON - Economics</a></li>
-			<li role="presentation"><a role="menuitem" tabindex="-1" href="#">MAE - Mechanical/Aerospace Engineering</a></li>
-		</ul>
-	</div>
--->
-	<form class="form-horizontal" id="addFriendForm" role="form" method="get" action="/resources">
+	<form class="form-horizontal" id="addFriendForm" onsubmit="checkForm()" role="form" method="get" action="/">
 		<div class="form-group">
 			<label for="major" class="col-sm-2 control-label">Department</label>
 			<div class="col-sm-2">
@@ -86,55 +59,34 @@
 		<div class="form-group">
 			<label for="course" class="col-sm-2 control-label">Course</label>
 			<div class="col-sm-2">
-				<select class="form-control" id="course">
+				<select class="form-control" id="course" name ="list">
 					<option>Select Course</option>
 				</select>
+				
 			</div>
 		</div>
 
-		<center><input type="submit" id="submitBtn" class="btn btn-default" value="Submit"></input></center>	
+		<center><input type="submit"  id="newProjectSubmitButton2" class="btn btn-default" value="Submit"></input></center>	
 	</form>
 
-
-	<!--
-	<form id="addFriendForm" role="form" method="get" action="/resources" style="margin: 0 auto">
-
-	<div class="form-group" style="width: 500px"> 
-		<div class="dropdown">
-			<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
-			Select Department  <b class = "caret"></b>
-			</button>
-			<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-				{{#each data}}
-				<li role="presentation"><a role="menuitem" tabindex="-1" href="#">{{value}}</a></li>
-				{{/each}}
-			</ul>
-		</div>
-		
-		<br/>
-	 	
-	 	<div class="dropdown">
-			<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
-			Choose a Class  
-	  		<b class = "caret"></b>
-			</button>
-			<ul class="dropdown-menu pull-left" role="menu" aria-labelledby="dropdownMenu1">
-				<li role="presentation"><a role="menuitem" tabindex="-1" href="#">CSE8A</a></li>
-				<li role="presentation"><a role="menuitem" tabindex="-1" href="#">CSE8B</a></li>
-				<li role="presentation"><a role="menuitem" tabindex="-1" href="#">CSE11</a></li>
-				<li role="presentation"><a role="menuitem" tabindex="-1" href="#">CSE30</a></li>
-				<li role="presentation"><a role="menuitem" tabindex="-1" href="#">CSE100</a></li>
-				<li role="presentation"><a role="menuitem" tabindex="-1" href="#">CSE101</a></li>
-				<li role="presentation"><a role="menuitem" tabindex="-1" href="#">CSE110</a></li>
-				<li role="presentation"><a role="menuitem" tabindex="-1" href="#">CSE120</a></li>
-			</ul>
-		</div>
-		
-		<br/>	   
-		
-		<center> <input type="submit" id="submitBtn" class="btn btn-default" value="Submit"></input></center>		
-	</div>
-	</form>-->
+<script>
+	function checkForm(){
+  		if(document.getElementById('major').value=="Select Department"){
+  			alert("Select a Department.");
+  			return false;
+  		}
+  		if(document.getElementById('course').value=="Select Course"){
+  			alert("Select a Course.");
+  			return false;
+  		}
+  		 if(document.getElementById('course').value=="No course available"){
+  			alert("Select a Course.");
+  			return false;
+  		}
+	addFriendForm.action = "/resources";
+    return true;
+  }
+</script>
 
 
 	<script src="js/jquery-1.11.0.js"></script>

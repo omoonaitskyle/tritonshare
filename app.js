@@ -16,6 +16,7 @@ var about = require('./routes/about');
 var submitted = require('./routes/submitted');
 var example = require('./routes/example');
 var add = require('./routes/add');
+var upload = require('./routes/upload');
 
 var mongoose = require('mongoose');
 var project = require('./routes/project');
@@ -52,6 +53,7 @@ if ('development' == app.get('env')) {
 app.get('/', index.view);
 app.get('/resources', resources.view);
 app.get('/share', share.view);
+app.get('/upload', upload.view);
 app.get('/preview', preview.view);
 app.get('/about', about.view);
 app.get('/submitted', submitted.view);

@@ -1,6 +1,19 @@
-var data = require("../data.json");
+
+var models = require('../models');
+
+/*
+ * GET home page.
+ */
 
 exports.view = function(req, res){
-	console.log(data);
-	res.render('share');
+
+	models.Project
+		.find()
+		.sort('date')
+		.exec(renderProjects);
+
+	function renderProjects(err, projects) {
+		res.render('share', { 'projects': projects });
+	}
+
 };

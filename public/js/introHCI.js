@@ -5,10 +5,37 @@ $(document).ready(function() {
 	initializePage();
 })
 
+
+
+/**
+	function getQueryVariable(variable)
+	{
+	  var query = window.location.search.substring(1);
+	  var vars = query.split("&");
+	  for (var i=0;i<vars.length;i++) {
+	    var pair = vars[i].split("=");
+	    if(pair[0] == variable){return pair[1];}
+	  }
+	  return(false);
+	}
+	**/
+
 /*
  * Function that is called when the document is ready.
  */
 function initializePage() {
+
+/**
+	var r = getQueryVariable("r");
+
+	alert(r); // outputs 'Ancho-Chile-Sauce'
+
+	function changePic() {
+	  document.getElementById("recipe").src = r;
+	}
+**/
+
+
 	$('.project a').click(function(e) {
 		// Prevent following the link
 		e.preventDefault();
@@ -23,23 +50,15 @@ function initializePage() {
 
 		// How to respond to the GET request
 		function addProjectDetails(project_json) {
-			// We need to compute a display string for the date
-			// Search 'toLocaleDateString' online for more details.
-			var date_obj = new Date(project_json['date']);
-			var options = {
-				weekday: "long",
-				year: "numeric",
-				month: "long",
-				day: "numeric"
-			};
-			var display_date = date_obj.toLocaleDateString('en-US', options);
 
-			// compose the HTML
 			var new_html =
-				'<div class="project-date">'+display_date+'</div>'+
-				'<div class="project-summary">'+project_json['summary']+'</div>'+
+				'<div class="project-summary">'+
+				//project_json['summary']+
+				'</div>'+
+				'<div class="project-summary">'+
+				'</div>'+
 				'<button class="project-delete btn btn-default" '+
-					'type="button">delete</button>';
+					'type="button">remove</button>';
 
 			// get the DIV to add content to
 			var details_div = $('#project' + idNumber + ' .details');
@@ -48,7 +67,8 @@ function initializePage() {
 
 			details_div.find('.project-delete').click(function(e) {
 				$.post('/project/'+idNumber+'/delete', function() {
-					window.location.href = '/resources';
+					//window.location.href = '/resources';
+					location.reload()
 				});
 			});
 		}
@@ -63,15 +83,20 @@ function initializePage() {
 		var image_url = $('#new-project-form #image_url').val();
 		var date = $('#new-project-form #date').val();
 		var summary = $('#new-project-form #summary').val();
+		var summary2 = $('#new-project-form #summary').val();
 		var json = {
 			'project_title': title,
 			'image_url': image_url,
 			'date':  date,
-			'summary': summary
+			'summary': summary,
+			'summary2': summary2
 		};
+		
 		$.post('/project/new', json, function() {
 			window.location.href = '/resources'; // reload the page
 		});
 	});
+
+
 }
 

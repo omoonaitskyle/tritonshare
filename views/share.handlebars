@@ -5,6 +5,7 @@
  <!-- Dont edit this shit -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/styles.css" rel="stylesheet">
+    <link href="css/styles2.css" rel="stylesheet">
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
  <!-- Dont edit above this shit -->
@@ -19,59 +20,73 @@
 		</div>
 	</div>
 <!-- Navigation bar ends-->
-	
-	
     <header id="top" class="header">
         <div class="text-vertical-center">
-            <h2>Add Resource</h2>
+            <h2>Share a URL</h2>
 
-			<br>
+      <br>
         </div>
     </header>
+	<form class="form-horizontal" id="addFriendForm" onsubmit="checkForm()" role="form" method="get" action="/resources">
+    <h4>Selected Class: </h4>
+    <select class="form-control" id="course" name ="list">
+      <option>
+        <script>
+          function getQueryVariable(variable)
+          {
+            var query = window.location.search.substring(1);
+            var vars = query.split("&");
+            for (var i=0;i<vars.length;i++) {
+              var pair = vars[i].split("=");
+              if(pair[0] == variable){return pair[1];}
+            }
+            return(pair[1]);
+          }
+        var r = getQueryVariable("r");
+        var s = r.replace("+", " ")
+          document.write(s)
 
-	
-	<div class = "container" id = "outer">
-	<input id="input-1a" type="file" class="file" data-show-preview="false">
-  <div id="inner">
-		<center><h3>- OR -</h3></center>
-	  	
-	</div>
 
-<!-------a!-->
+          </script>
+      </option>
+    </select>
+</center> 
+<input type="submit"  id="submitBtn" class="btn btn-default" value="poop"></input>
 
+  </form>
+
+</center> 
+<form id="new-project-form" role="form">
+    <div class="form-group">
+      <label for="title">URL</label>
+      <input type="text" required class="form-control" id="summary" placeholder="URL" >
+    </div>
+    <div class="form-group">
+      <label for="summary">Description</label>
+      <textarea type="text" class="form-control" id="title" rows="3" placeholder="This does not work yet."></textarea>
+    </div>
+    <button id="newProjectSubmitButton" type="button" class="btn btn-default">Submit</button>
+  </form>
+  <form action="/preview">
+    <input type="submit" value="Preview" type="button" class="btn btn-default">
+</form>
  
-
-
-     <form id="addFriendForm" role="form" method="get" action="/add">
-     	<div class="form-group">
-          <label for="link">Submit URL:</label>
-          <input type="text" class="form-control" id="link" placeholder="Link" name="link">
-        </div>
-        <br><br>
-        <div class="form-group">
-          <label for="name">Title:</label>
-          <input type="text" class="form-control" id="name" placeholder="Name" name="name">
-        </div>
-        <div class="form-group">
-          <label for="description">Description:</label>
-          <input type="text" class="form-control" id="description" placeholder="Description" name="description">(i.e. date, year, professor)
-        </div>
-
-	    <div class="form-group">
-
- 	
-	<br/>	   
-
-	</form>
-		<center>
-        <input type="submit" id="submitBtn" class="btn btn-default" value="Submit"></input>
-    </center>
-    </form>
- 
-    <script src="js/jquery.js"></script>
-    <script src="js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/introHCI.js"></script>
 	
+<script>
 
+  document.getElementById("tag").textContent=s;
+    document.getElementById("tag2").textContent=s;
+  // Get references to the objects you need (<select> and <span>)
+  var list = document.getElementById('course');
+  var tag = document.getElementById('tag');
+  var tag2 = document.getElementById('tag2');
+
+  // When the list value changes, set the innerHTML of the <span>
+  
+</script>
 </body>
 
 </html>

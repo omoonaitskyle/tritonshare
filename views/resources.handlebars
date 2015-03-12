@@ -4,7 +4,8 @@
 <head>
     <title>Resources</title>    
     <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/styles.css" rel="stylesheet">  <!--this needs to change-->
+    <link href="css/styles.css" rel="stylesheet">
+    <link href="css/styles2.css" rel="stylesheet">
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css"> 
     <!-- this is a comment in HTML -->
@@ -27,48 +28,72 @@
     </div>
 <!-- Navigation bar ends-->
     <div class="container">
-        <!-- h1 through h6 are headers. The higher the number, the smaller the header -->
-        <!-- p means paragraph -->
 
+<form class="form-horizontal" id="addFriendForm2" onsubmit="checkForm()" role="form" method="get" action="/share">
+    <h4>Selected Class: </h4>
+    <select class="form-control" id="course" name ="list">
+      <option>
+        <script>
+          function getQueryVariable(variable)
+          {
+            var query = window.location.search.substring(1);
+            var vars = query.split("&");
+            for (var i=0;i<vars.length;i++) {
+              var pair = vars[i].split("=");
+              if(pair[0] == variable){return pair[1];}
+            }
+            return(pair[1]);
+          }
+        var r = getQueryVariable("r");
+        var s = r.replace("+", " ")
+          document.write(s)
+          </script>
+      </option>
+    </select>
 
-        <h4>Resources</h4>
-        <!-- divs are invisible structuring elements that stack vertically by default. Use them to organize your code -->
-        <!-- img tags are images. Lorem Pixel will deliver random images; handy! -->
-        <!-- a are anchors, also known as hyperlinks. Use the href attribute to tell the browser where to go when the user clicks -->
+<br>
+<h4> Resources: </h4>
+
         {{#each projects}}
         <div class="project" id="project{{id}}">
             <div class="thumbnail">
-                <a href="#">Expand
-                    <p>{{title}}</p>
-                </a>
+                <a href="#">+ {{summary}}</a>
                 <div class="details"></div>
             </div>
         </div>
         {{/each}}
 
     <hr />
+<input type="submit"  id="submitBtn" class="btn btn-default" value="Share a URL"></input></center> 
 
-    <form id="new-project-form" role="form">
-    <div class="form-group">
-      <label for="title">Title</label>
-      <input type="text" class="form-control" id="title" placeholder="Title">
-    </div>
-    <div class="form-group">
-      <label for="image_url">URL</label>
-      <input type="text" class="form-control" id="image_url" placeholder="http://google.com">
-    </div>
-    <div class="form-group">
-      <label for="summary">Description</label>
-      <textarea type="text" class="form-control" id="summary" rows="3" placeholder="Add a description."></textarea>
-    </div>
-    <div class = "container" id = "outer">
-    <input id="input-1a" type="file" class="file" data-show-preview="false">
-    <div id="inner">
-    <button id="newProjectSubmitButton" type="button" class="btn btn-default">Submit</button>
-    </form>
-    <form action="/preview">
-    <input type="submit" value="Preview" type="button" class="btn btn-default">
-    </form>
+<input type="submit"  id="submitBtn" class="btn btn-default" value="Upload a File" ></input></center> 
+  </form>
+  <!--
+<form action="#">
+    <input type="submit" value="Upload a File" type="button" class="btn btn-default">
+</form>
+-->
+
+
+<script>
+
+  document.getElementById("tag").textContent=s;
+    document.getElementById("tag2").textContent=s;
+  // Get references to the objects you need (<select> and <span>)
+  var list = document.getElementById('course');
+  var tag = document.getElementById('tag');
+  var tag2 = document.getElementById('tag2');
+
+  // When the list value changes, set the innerHTML of the <span>
+  list.onchange = function() {
+    tag.innerHTML = this.value;
+    tag2.innterHTML = this.value;
+  };
+</script>
+
+
+
+
 
     <script src="https://code.jquery.com/jquery.js"></script>
     <script src="/js/bootstrap.min.js"></script>
