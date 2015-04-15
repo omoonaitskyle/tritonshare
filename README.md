@@ -1,4 +1,2 @@
-Lab 5
+Tritonshare (Release ver.)
 ====
-
-Lab 5: Putting it together
